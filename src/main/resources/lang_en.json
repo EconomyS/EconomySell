@@ -11,6 +11,7 @@
 	"no-permission-sell": "&4You don't have permission to sell item.",
 	"tap-again": "&eTap again to sell &2{1}&e of &b{0}&e for &6{M}{2}&e.",
 	"no-item": "You do not have enough item to sell &4{0}&r.",
+	"no-player": "You cannot sell items in creative!",
 	"failed-sell": "&4Failed to sell item due to unknown reason.",
 	"sold-item": "You have sold item {1} of &b{0}&r for &6{M}{2}&r.",
 	"sell-breaking-forbidden": "&4You cannot break sell centers.",
