@@ -369,7 +369,7 @@ public class EconomySell extends PluginBase implements Listener{
 	public void onSignChange(SignChangeEvent event) {
 		String[] lines = event.getLines();
 
-		if (lines[0].equalsIgnoreCase("sell") || lines[0].equalsIgnoreCase("[sell]")) {
+		if (lines[0].trim().equalsIgnoreCase("sell") || lines[0].trim().equalsIgnoreCase("[sell]")) {
 			Position pos = event.getBlock();
 			String key = pos.x + ":" + pos.y + ":" + pos.z + ":" + pos.level.getFolderName();
 			if(!this.sells.containsKey(key)){
