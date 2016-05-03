@@ -317,23 +317,46 @@ public class EconomySell extends PluginBase implements Listener{
 				}
 				
 				if(player.hasPermission("economysell.sell")){
-					if(!player.getInventory().contains(item)){
-						player.sendMessage(this.getMessage("no-item", new Object[]{item.getName()}));
-						return;
-					}
-
 					if (player.isCreative()) {
 						player.sendMessage(this.getMessage("no-player"));
 						return;
 					}
-					
-					this.api.addMoney(player, sell.getPrice(), true);
-					player.getInventory().remove(item);
-					player.sendMessage(this.getMessage("sold-item", new Object[]{
-							item.getName(), item.getCount(), sell.getPrice()
-					}));
+	                            	int count = 0;
+	                            	for (Item items : player.getInventory().getContents().values()) {
+	                                	if (items.getId() == item.getId() && items.getDamage() == item.getDamage()) {
+	                                	   count += item.getCount();
+	                                	}
+	                            	}
+	                        	if (count >= item.getCount()) {
+	                                	this.removeItem(player, new Item(item.getId(), item.getDamage(), item.getCount()));
+	                                	this.api.addMoney(player, sell.getPrice(), true);
+	                                	player.sendMessage(this.getMessage("sold-item", new Object[]{
+	                                        	item.getName(), item.getCount(), sell.getPrice()
+	                                }));
+	                            } else {
+	                                player.sendMessage(this.getMessage("no-item", new Object[]{item.getName()}));
+	                            }
 				}else{
 					player.sendMessage(this.getMessage("no-permission-sell"));
+				}
+			}
+		}
+	}
+	
+
+	public void removeItem(Player sender, Item getitem) {
+		int getcount = getitem.getCount();
+		if (getcount <= 0)
+			return;
+		for (int index = 0; index < sender.getInventory().getSize(); index++) {
+			Item setitem = sender.getInventory().getItem(index);
+			if (getitem.getId() == setitem.getId() && getitem.getDamage() == setitem.getDamage()) {
+				if (getcount >= setitem.getCount()) {
+					getcount -= setitem.getCount();
+					sender.getInventory().setItem(index, Item.get(Item.AIR, 0, 1));
+				} else if (getcount < setitem.getCount()) {
+					sender.getInventory().setItem(index, Item.get(getitem.getId(), 0, setitem.getCount() - getcount));
+					break;
 				}
 			}
 		}
@@ -380,7 +403,7 @@ public class EconomySell extends PluginBase implements Listener{
 	public void onSignChange(SignChangeEvent event) {
 		String[] lines = event.getLines();
 
-		if (lines[0].equalsIgnoreCase("sell") || lines[0].equalsIgnoreCase("[sell]")) {
+		if (lines[0].trim().equalsIgnoreCase("sell") || lines[0].trim().equalsIgnoreCase("[sell]")) {
 			Position pos = event.getBlock();
 			String key = pos.x + ":" + pos.y + ":" + pos.z + ":" + pos.level.getFolderName();
 			if(!this.sells.containsKey(key)){
