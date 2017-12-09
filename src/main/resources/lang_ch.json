@@ -1,0 +1,27 @@
+{
+	"invalid-side": "&4无效的方向选项.",
+	"removed-queue": "&2已从商店创建队列中移除.",
+	"added-queue": "&2已添加到商店创建队列. 请点击你要创建商店的地方.",
+	"removed-rm-queue": "&2已从商店移除队列中移除.",
+	"added-rm-queue": "&2已添加到商店移除队列. 请点击你需要移除商店的地方.",
+	"sell-create-failed": "&4由于未知原因,创建回收商店失败.",
+	"sell-already-exist": "&4回收商店已经存在.",
+	"sell-created": "&2回收商店创建成功.",
+	"sell-removed": "&2回收商店移除成功.",
+	"no-permission-sell": "&4你没有回收物品的权限.",
+	"tap-again": "&e请再次点击以确认以 &6{M}{2}&e 的价格回收 &b{0}&e x&2{1}&e.",
+	"no-item": "你没有足够的 &4{0}&r 去回收.",
+	"no-player": "你不能在创造模式下使用回收商店!",
+	"failed-sell": "&4由于未知原因,回收物品失败.",
+	"sold-item": "你以 &6{M}{2}&r 的价格回收了 &b{0}&r x{1}.",
+	"sell-breaking-forbidden": "&4你不能破坏回收商店.",
+	"select-sell": "&4请选择商店以进行购买.",
+	"vending-not-enabled": "&4使用命令回收物品暂时不可用.",
+	"invalid-amount": "&4你给出了无效的数量.",
+	"invalid-amount-multiple": "&4数量必须是 {0} 的倍数.",
+	
+	"sign-text-1": "[回收商店]",
+	"sign-text-2": "价格 : {M}{0}",
+	"sign-text-3": "物品 : {0}",
+	"sign-text-4": "数量 : {0}"
+}
